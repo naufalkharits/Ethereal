@@ -10,7 +10,7 @@ const bot = new Telegraf(process.env.TELEGRAM_TOKEN)
 app.use(express.json())
 bot.use((ctx, next) => {
   console.log(ctx)
-  ctx.message.text = ctx.message.text.toLowerCase()
+  ctx.message.text = { origin: ctx.message.text, modified: ctx.message.text.toLowerCase() }
 
   return next(ctx)
 })
