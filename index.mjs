@@ -2,6 +2,8 @@ import dotenv from "dotenv"
 import express from "express"
 import { Telegraf } from "telegraf"
 
+import { isAddress } from "./utils/evm.mjs"
+
 dotenv.config()
 const app = express()
 const bot = new Telegraf(process.env.TELEGRAM_TOKEN)
@@ -16,6 +18,14 @@ bot.use((ctx, next) => {
 })
 
 bot.command("start", (ctx) => ctx.reply(`Hello, ${ctx.message.from.first_name}!`))
+
+bot.command("wallet", (ctx) => {
+  const address = isAddress(ctx.message.text.modified.replace("/wallet ", ""))
+
+  if (!address) return ctx.reply("WRONG ADDRESS!")
+
+  return ctx.reply(address)
+})
 
 bot.launch()
 
