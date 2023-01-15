@@ -7,8 +7,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js"
+    "dev": "nodemon index.mjs",
+    "start": "node index.mjs"
   },
   "dependencies": {
     "dotenv": "^16.0.3",
