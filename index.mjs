@@ -1,5 +1,6 @@
 import dotenv from "dotenv"
 import express from "express"
+import moralis from "moralis"
 import { Telegraf } from "telegraf"
 
 import { isAddress } from "./utils/evm.mjs"
@@ -7,6 +8,10 @@ import { isAddress } from "./utils/evm.mjs"
 dotenv.config()
 const app = express()
 const bot = new Telegraf(process.env.TELEGRAM_TOKEN)
+const Moralis = moralis.default
+Moralis.start({
+  apiKey: process.env.MORALIS_KEY,
+})
 
 // middlewares
 app.use(express.json())
