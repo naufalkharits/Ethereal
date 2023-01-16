@@ -22,6 +22,10 @@ bot.use((ctx, next) => {
   return next(ctx)
 })
 
+app.post("/wallet", (req, res) => {
+  console.log(req)
+})
+
 bot.command("start", (ctx) => ctx.reply(`Hello, ${ctx.message.from.first_name}!`))
 
 bot.command("wallet", (ctx) => {
