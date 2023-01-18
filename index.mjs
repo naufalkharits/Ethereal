@@ -16,14 +16,8 @@ Moralis.start({
 
 // middlewares
 app.use(express.json())
-bot
-  .use(async (ctx, next) => {
-    ctx.message.text = ctx.message.text.toLowerCase()
+bot.use(session({ initial: () => ({}) })).use(conversations())
 
-    await next()
-  })
-  .use(session({ initial: () => ({}) }))
-  .use(conversations())
 
 app.post("/wallet", (req, res) => {
   console.log(req)
