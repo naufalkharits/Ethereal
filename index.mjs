@@ -1,10 +1,10 @@
-import { conversations } from "@grammyjs/conversations"
+import { conversations, createConversation } from "@grammyjs/conversations"
 import dotenv from "dotenv"
 import express from "express"
 import { Bot, session } from "grammy"
 import moralis from "moralis"
 
-import { isAddress } from "./utils/evm.mjs"
+import wallet from "./utils/conversations/wallet.mjs"
 
 dotenv.config()
 const app = express()
@@ -31,12 +31,8 @@ app.post("/wallet", (req, res) => {
 
 bot.command("start", (ctx) => ctx.reply(`Hello, ${ctx.message.from.first_name}!`))
 
-bot.command("wallet", (ctx) => {
-  const address = isAddress(ctx.message.text.replace("/wallet ", ""))
-
-  if (!address) return ctx.reply("WRONG ADDRESS!")
-
-  return ctx.reply(address)
+bot.use(createConversation(wallet)).command("wallet", async (ctx) => {
+  await ctx.conversation.enter("wallet")
 })
 
 bot.launch()
