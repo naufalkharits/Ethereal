@@ -29,9 +29,9 @@ app.post("/wallet", (req, res) => {
   console.log(req)
 })
 
-bot.command("start", (ctx) => ctx.reply(`Hello, ${ctx.message.from.first_name}!`))
+bot.hears(/start/i, async (ctx) => await ctx.reply(`Hello, ${ctx.message.from.first_name}!`))
 
-bot.use(createConversation(wallet)).command("wallet", async (ctx) => {
+bot.use(createConversation(wallet)).hears(/wallet/i, async (ctx) => {
   await ctx.conversation.enter("wallet")
 })
 
