@@ -1,3 +1,4 @@
+import { conversations } from "@grammyjs/conversations"
 import dotenv from "dotenv"
 import express from "express"
 import { Bot, session } from "grammy"
@@ -22,6 +23,7 @@ bot
     await next()
   })
   .use(session({ initial: () => ({}) }))
+  .use(conversations())
 
 app.post("/wallet", (req, res) => {
   console.log(req)
