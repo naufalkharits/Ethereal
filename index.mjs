@@ -15,12 +15,12 @@ Moralis.start({
 
 // middlewares
 app.use(express.json())
-bot.use((ctx, next) => {
-  // ctx.message.text = { origin: ctx.message.text, modified: ctx.message.text.toLowerCase() }
-  ctx.message.text = ctx.message.text.toLowerCase()
+bot
+  .use(async (ctx, next) => {
+    ctx.message.text = ctx.message.text.toLowerCase()
 
-  return next(ctx)
-})
+    await next()
+  })
 
 app.post("/wallet", (req, res) => {
   console.log(req)
