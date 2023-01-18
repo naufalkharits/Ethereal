@@ -31,6 +31,11 @@ app.post("/wallet", (req, res) => {
 
 bot.hears(/\/start/i, async (ctx) => await ctx.reply(`Hello, ${ctx.message.from.first_name}!`))
 
+bot.hears(/\/cancel/i, async (ctx) => {
+  await ctx.conversation.exit()
+  await ctx.reply("CANCELLED!")
+})
+
 bot.use(createConversation(wallet)).hears(/\/wallet/i, async (ctx) => {
   await ctx.conversation.enter("wallet")
 })
