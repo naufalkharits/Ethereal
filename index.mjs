@@ -1,6 +1,6 @@
 import dotenv from "dotenv"
 import express from "express"
-import { Bot } from "grammy"
+import { Bot, session } from "grammy"
 import moralis from "moralis"
 
 import { isAddress } from "./utils/evm.mjs"
@@ -21,6 +21,7 @@ bot
 
     await next()
   })
+  .use(session({ initial: () => ({}) }))
 
 app.post("/wallet", (req, res) => {
   console.log(req)
