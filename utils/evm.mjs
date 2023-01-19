@@ -29,9 +29,10 @@ function toChecksumAddress(addresses) {
 
   for (let x = 0; x < modifiedAddresses.length; x++) {
     const modifiedAddress = modifiedAddresses[x]
+    const hash = hashes[x]
     newAddress = "0x"
     for (let y = 0; y < modifiedAddress.length; y++) {
-      if (parseInt(hashes[y], 16) >= 8) {
+      if (parseInt(hash[y], 16) >= 8) {
         newAddress += modifiedAddress[y].toUpperCase()
       } else {
         newAddress += modifiedAddress[y]
@@ -40,6 +41,5 @@ function toChecksumAddress(addresses) {
     newAddresses.push(newAddress)
   }
 
-  console.log(newAddresses)
   return newAddresses
 }
