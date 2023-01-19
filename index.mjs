@@ -2,17 +2,12 @@ import { conversations, createConversation } from "@grammyjs/conversations"
 import dotenv from "dotenv"
 import express from "express"
 import { Bot, session } from "grammy"
-import moralis from "moralis"
 
 import wallet from "./conversations/wallet.mjs"
 
 dotenv.config()
 const app = express()
 const bot = new Bot(process.env.TELEGRAM_TOKEN)
-const Moralis = moralis.default
-Moralis.start({
-  apiKey: process.env.MORALIS_KEY,
-})
 
 // middlewares
 app.use(express.json())
