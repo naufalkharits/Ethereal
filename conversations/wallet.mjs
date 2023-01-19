@@ -1,5 +1,5 @@
 import { isAddress } from "../evm.mjs"
-import { upsertAddress } from "../controllers/wallet.controller.mjs"
+import { upsertAddresses } from "../controllers/wallet.controller.mjs"
 import isAddress from "../utils/evm.mjs"
 import client from "../utils/mongodb.mjs"
 
@@ -13,7 +13,7 @@ export default async function wallet(conversation, ctx) {
 
   try {
     await client.connect()
-    await upsertAddress(client, { _id: message.from.id.toString(), addresses })
+    await upsertAddresses(client, { _id: message.from.id.toString(), addresses })
     await ctx.reply("ADDED!")
   } catch (error) {
     console.error(error)

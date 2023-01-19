@@ -1,4 +1,4 @@
-export async function upsertAddress(client, data) {
+export async function upsertAddresses(client, data) {
   const db = client.db("ethereal")
   const collection = db.collection("wallets")
 
