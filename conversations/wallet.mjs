@@ -6,7 +6,5 @@ export default async function wallet(conversation, ctx) {
   const { message } = await conversation.wait()
   const address = isAddress(message.text)
 
-  if (!address) return wallet(conversation, ctx)
-  await ctx.reply(address)
-}
+  if (!addresses) return wallet(conversation, ctx)
 
