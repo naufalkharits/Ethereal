@@ -4,7 +4,7 @@ import express from "express"
 import { Bot, session } from "grammy"
 import moralis from "moralis"
 
-import wallet from "./utils/conversations/wallet.mjs"
+import wallet from "./conversations/wallet.mjs"
 
 dotenv.config()
 const app = express()

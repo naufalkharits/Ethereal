@@ -1,6 +1,6 @@
 import { isAddress } from "../evm.mjs"
 
-async function wallet(conversation, ctx) {
+export default async function wallet(conversation, ctx) {
   await ctx.reply("What is your wallet address?")
 
   const { message } = await conversation.wait()
@@ -10,4 +10,3 @@ async function wallet(conversation, ctx) {
   await ctx.reply(address)
 }
 
-export default wallet
