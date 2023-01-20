@@ -1,17 +1,14 @@
 import dotenv from "dotenv"
 import express from "express"
 
+import router from "./routes/index.route.mjs"
 import bot from "./utils/grammy.mjs"
 
 dotenv.config()
 const app = express()
 
 // middlewares
-app.use(express.json())
-
-app.post("/wallet", (req, res) => {
-  console.log(req)
-})
+app.use(express.json()).use(router)
 
 bot.launch()
 
