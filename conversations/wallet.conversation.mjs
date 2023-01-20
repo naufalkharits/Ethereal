@@ -11,14 +11,6 @@ export default async function wallet(conversation, ctx) {
 
   if (!addresses) return wallet(conversation, ctx)
 
-  await startMoralis()
-  for (let x = 0; x < addresses.length; x++) {
-    const address = addresses[x]
-    await Moralis.Streams.addAddress({
-      id: "65b6215a-f76a-44fd-aec8-a44e02aa4761",
-      address,
-    })
-  }
 
   try {
     await client.connect()
@@ -29,4 +21,6 @@ export default async function wallet(conversation, ctx) {
   } finally {
     await client.close()
   }
+  // moralis
+  await addAddresses(addresses)
 }
