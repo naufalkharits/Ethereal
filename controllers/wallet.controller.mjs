@@ -1,14 +1,25 @@
-export async function upsertAddresses(client, data) {
+import client from "../utils/mongodb.mjs"
+import Moralis, { startMoralis } from "../utils/moralis.mjs"
+
+export async function upsertAddresses(data) {
   const db = client.db("ethereal")
   const collection = db.collection("wallets")
 
-  await collection.updateOne(
-    { _id: data._id },
-    { $addToSet: { address: { $each: data.addresses } } },
-    {
-      upsert: true,
-    }
-  )
+  try {
+    await client.connect()
+    await collection.updateOne(
+      { _id: data.from.id.toString() },
+      { $addToSet: { address: { $each: data.addresses } } },
+      {
+        upsert: true,
+      }
+    )
+  } catch (error) {
+    console.error(error)
+  } finally {
+    await client.close()
+  }
+}
 
 export async function addAddresses(data) {
   await startMoralis()
