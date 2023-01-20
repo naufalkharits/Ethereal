@@ -18,18 +18,17 @@ app.post("/wallet", (req, res) => {
   console.log(req)
 })
 
-bot.hears(/^\/start\b/i, async (ctx) => await ctx.reply(`Hello, ${ctx.message.from.first_name}!`))
+bot.hears(/^\/start\b/i, async (ctx) => await ctx.reply(`Hello, ${ctx.from.first_name}!`))
 
 bot.hears(/^\/cancel\b/i, async (ctx) => {
   await ctx.conversation.exit()
   await ctx.reply("CANCELLED!")
 })
 
-bot.use(createConversation(wallet)).hears(/^\/wallet\b/i, async (ctx) => {
-  await ctx.conversation.enter("wallet")
-})
-
 bot.launch()
+bot
+  .use(createConversation(wallet))
+  .hears(/^\/wallet\b/i, async (ctx) => await ctx.conversation.enter("wallet"))
 
 const server = app.listen(process.env.PORT, () =>
   console.log(`listening on port ${server.address().port}`)
