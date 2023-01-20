@@ -1,3 +1,4 @@
+import bot from "../utils/grammy.mjs"
 import client from "../utils/mongodb.mjs"
 import Moralis, { startMoralis } from "../utils/moralis.mjs"
 
@@ -30,4 +31,8 @@ export async function addAddresses(data) {
       address,
     })
   }
+}
+
+export async function webhook(req, res) {
+  await bot.api.sendMessage(521603662, "New!")
 }
