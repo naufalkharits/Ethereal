@@ -1119,6 +1119,11 @@
     debug "^4.3.4"
     o-son "^1.0.0"
 
+"@grammyjs/menu@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@grammyjs/menu/-/menu-1.1.2.tgz#d4c447e72d16ccc0bb202a19a310720f1720e2da"
+  integrity sha512-OsH9psoatplzMTsouyc8tcOjHMCfWpymmnOBC3YJ9SNi+Akpa52I+YYoiK0/jS7g24DNiR5hyr2U9YgmLeswig==
+
 "@grammyjs/types@^2.11.0", "@grammyjs/types@^2.8.2":
   version "2.11.2"
   resolved "https://registry.yarnpkg.com/@grammyjs/types/-/types-2.11.2.tgz#55c7359e10b4b9970b55cb3a7fe7d9b22c67590a"
