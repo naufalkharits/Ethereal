@@ -23,7 +23,6 @@ export async function upsertAddresses(data) {
 }
 
 export async function addAddresses(data) {
-  await startMoralis()
   for (let x = 0; x < data.length; x++) {
     const address = data[x]
     await Moralis.Streams.addAddress({

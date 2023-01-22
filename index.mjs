@@ -12,6 +12,9 @@ app.use(express.json()).use(router)
 
 bot.launch()
 
-const server = app.listen(process.env.PORT, () =>
+const server = app.listen(process.env.PORT, async () => {
   console.log(`listening on port ${server.address().port}`)
-)
+  await Moralis.start({
+    apiKey: process.env.MORALIS_KEY,
+  })
+})
