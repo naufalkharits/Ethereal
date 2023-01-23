@@ -12,4 +12,11 @@ bot
   .use(conversations())
   .use(commands)
 
+await bot.api.setMyCommands([
+  { command: "menu", description: "Main menu" },
+  { command: "cancel", description: "Cancel action" },
+  { command: "wallet", description: "Wallet menu" },
+  { command: "cointoken", description: "Coin / token menu" },
+])
+
 export default bot
